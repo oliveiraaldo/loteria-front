@@ -18,7 +18,7 @@ Este é o front-end da aplicação de loteria que consome uma API construída pa
 1. **Clone o repositório**:
 
    ```sh
-   git clone <url-do-repositorio>
+   git clone https://github.com/oliveiraaldo/loteria-front
    cd loteria-front
    ```
 
