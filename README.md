@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Loteria Front-end em React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é o front-end da aplicação de loteria que consome uma API construída para gerar bilhetes de loteria e realizar sorteios de prêmios.
 
-## Available Scripts
+## Requisitos
 
-In the project directory, you can run:
+- Node.js (versão 14 ou superior)
+- npm ou yarn
 
-### `npm start`
+## Tecnologias Utilizadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React: Biblioteca JavaScript para construir a interface do usuário.
+- Tailwind CSS: Framework CSS para estilização rápida e eficiente.
+- Axios: Biblioteca para realizar requisições HTTP.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Configuração Inicial do Projeto
 
-### `npm test`
+1. **Clone o repositório**:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```sh
+   git clone <url-do-repositorio>
+   cd loteria-front
+   ```
 
-### `npm run build`
+2. **Instalar as dependências**:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```sh
+   npm install
+   # ou
+   yarn install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Configurar o Tailwind CSS**:
+   Primeiro, instale o Tailwind CSS e as dependências necessárias:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```sh
+   npm install -D tailwindcss postcss autoprefixer
+   npx tailwindcss init -p
+   ```
 
-### `npm run eject`
+   No arquivo `tailwind.config.js`, atualize o conteúdo para adicionar os caminhos onde você utilizará o Tailwind:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```js
+   /** @type {import('tailwindcss').Config} */
+   module.exports = {
+     content: ["./src/**/*.{js,jsx,ts,tsx}"],
+     theme: {
+       extend: {},
+     },
+     plugins: [],
+   }
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   Adicione as diretivas do Tailwind ao arquivo `src/index.css`:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```css
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Iniciar o servidor de desenvolvimento**:
 
-## Learn More
+   ```sh
+   npm start
+   # ou
+   yarn start
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Estrutura do Projeto
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **src/components**: Contém os componentes reutilizáveis do React:
+  - `Header.js`: Cabeçalho da aplicação.
+  - `BilheteForm.js`: Formulário para gerar bilhetes.
+  - `Sorteio.js`: Componente para realizar o sorteio das dezenas premiadas.
+  - `Conferencia.js`: Mostra os bilhetes gerados e compara com o bilhete sorteado.
 
-### Code Splitting
+- **src/services**: Contém a lógica de conexão com a API:
+  - `api.js`: Configuração do Axios para se comunicar com a API da loteria.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Como Utilizar
 
-### Analyzing the Bundle Size
+1. **Gerar Bilhetes**: Utilize o formulário para informar quantos bilhetes deseja gerar e quantas dezenas cada bilhete terá. Clique em "Gerar Bilhetes".
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. **Realizar Sorteio**: Após gerar os bilhetes, clique no botão "Realizar Sorteio" para sortear as dezenas premiadas.
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. **Conferir Bilhetes**: Abaixo dos resultados do sorteio, você verá uma tabela com a conferência dos bilhetes gerados e as dezenas que foram sorteadas.
